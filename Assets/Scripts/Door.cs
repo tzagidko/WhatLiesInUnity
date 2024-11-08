@@ -33,7 +33,7 @@ public class Door : MonoBehaviour
         if (playerInventory.HasItem(requiredItem))  // Check if the player has the key
         {
             isOpen = true;
-            gameManager.GetComponent<GameManager>().WinGame();  // Trigger win condition
+           // gameManager.GetComponent<GameManager>().WinGame();  // Trigger win condition
             Debug.Log("Door opened, you win!");
         }
         else
