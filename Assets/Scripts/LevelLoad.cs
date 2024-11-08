@@ -9,6 +9,7 @@ public class LevelLoad : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }public void LoadLevel(){
         SceneManager.LoadScene("FirstLevel");
+        Time.timeScale = 1.0f;
     }
 
 }

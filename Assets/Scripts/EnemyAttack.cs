@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyAttack : MonoBehaviour
 {
@@ -69,6 +70,7 @@ public class EnemyAttack : MonoBehaviour
         Time.timeScale = 0;
         Cursor.visible=true;
          Cursor.lockState = CursorLockMode.None;
+        //LoadLevel();
     }
 
     
@@ -102,5 +104,9 @@ System.Collections.IEnumerator CooldownCoroutine()
     yield return new WaitForSeconds(attackCooldown);
     isOnCooldown = false;
 }
-    
+    public void LoadLevel()
+    {
+        SceneManager.LoadScene("FirstLevel");
+    }
+
 }

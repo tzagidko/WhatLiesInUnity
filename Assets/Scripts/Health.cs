@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -54,6 +55,11 @@ public class Health : MonoBehaviour
      panel.SetActive(true);
       Cursor.visible=true;
          Cursor.lockState = CursorLockMode.None;
+        //LoadLevel();    
        
+    }
+    public void LoadLevel()
+    {
+        SceneManager.LoadScene("FirstLevel");
     }
 }
