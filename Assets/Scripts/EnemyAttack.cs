@@ -66,6 +66,9 @@ public class EnemyAttack : MonoBehaviour
     {
         Debug.Log("Enemy triggers a jump scare kill!");
         StartCoroutine(JumpScareAndKill());
+        Time.timeScale = 0;
+        Cursor.visible=true;
+         Cursor.lockState = CursorLockMode.None;
     }
 
     

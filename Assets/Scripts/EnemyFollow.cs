@@ -9,7 +9,9 @@ public class EnemyFollow : MonoBehaviour
     public float followSpeed = 3f;            
     public float rotationSpeed = 5f;          
 
-    private bool isFollowing = false;         
+    private bool isFollowing = false; 
+       public Animator animator;         
+     
 
     void Update()
     {
@@ -46,6 +48,10 @@ public class EnemyFollow : MonoBehaviour
         isFollowing = true;
         RotateTowardsPlayer();
         MoveTowardsPlayer();
+        if (animator != null)
+            {
+                animator.SetBool("isWalking", true);
+            }
     }
 
     
@@ -67,6 +73,10 @@ public class EnemyFollow : MonoBehaviour
     void StopFollowing()
     {
         isFollowing = false;
+         if (animator != null)
+            {
+                animator.SetBool("isWalking", false);
+            }
     }
 
     

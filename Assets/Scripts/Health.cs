@@ -5,7 +5,8 @@ public class Health : MonoBehaviour
 {
     [Header("Health Settings")]
     public int maxHealth = 100;                 
-    private int currentHealth;                  
+    private int currentHealth; 
+    public GameObject panel;                 
 
     [Header("UI Settings")]
     public Scrollbar healthBarScrollbar;        
@@ -49,7 +50,10 @@ public class Health : MonoBehaviour
    
     private void Die()
     {
-        Debug.Log("Player has died!");
+     Time.timeScale = 0;
+     panel.SetActive(true);
+      Cursor.visible=true;
+         Cursor.lockState = CursorLockMode.None;
        
     }
 }

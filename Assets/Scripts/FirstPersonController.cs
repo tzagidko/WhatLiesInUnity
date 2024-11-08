@@ -15,6 +15,7 @@ public class FirstPersonController : MonoBehaviour
     private CharacterController controller;
     private Vector3 velocity;
     private float xRotation = 0f;
+    private Door door;
 
     [Header("References")]
     public Transform playerCamera;
@@ -37,6 +38,10 @@ public class FirstPersonController : MonoBehaviour
 
         
         ApplyGravity();
+        if (Input.GetKeyDown(KeyCode.E) && door != null)
+        {
+            door.TryOpenDoor();  // Attempt to open the door if the player presses "E"
+        }
     }
 
     void MouseLook()
@@ -74,5 +79,19 @@ public class FirstPersonController : MonoBehaviour
 
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Door"))  // If colliding with a door
+        {
+            door = other.GetComponent<Door>();  // Get the Door component attached to the door object
+        }
+    }
+     private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Door"))  // If exiting the door's collider
+        {
+            door = null;  // Reset the door reference
+        }
     }
 }
