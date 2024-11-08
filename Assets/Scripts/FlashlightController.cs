@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FlashlightController : MonoBehaviour
 {
     [Header("Flashlight Settings")]
-    public KeyCode toggleKey = KeyCode.F;  // Key to toggle flashlight
-    public Light flashlight;                // Reference to the flashlight Light component
-    public float batteryLife = 100f;        // Total battery life in seconds
-    public float drainRate = 10f;           // Battery drain rate per second
-    public bool isFlashlightOn = false;     // Initial state of the flashlight
+    public KeyCode toggleKey = KeyCode.F;  
+    public Light flashlight;                
+    public float batteryLife = 100f;        
+    public float drainRate = 7f;           
+    public bool isFlashlightOn = false;     
 
     private float currentBatteryLife;
+     public Scrollbar flashlightScrollbar;  
 
     void Start()
     {
@@ -21,14 +23,22 @@ public class FlashlightController : MonoBehaviour
             return;
         }
 
-        flashlight.enabled = isFlashlightOn; // Set initial state
+        flashlight.enabled = isFlashlightOn; 
         currentBatteryLife = batteryLife;
+    }
+    private void UpdateFlashBar()
+    {
+        if (flashlightScrollbar != null)
+        {
+            flashlightScrollbar.size = (float)currentBatteryLife/batteryLife;
+        }
     }
 
     void Update()
     {
         HandleFlashlightToggle();
         DrainBattery();
+        UpdateFlashBar();
     }
 
     void HandleFlashlightToggle()
@@ -45,8 +55,8 @@ public class FlashlightController : MonoBehaviour
         if (isFlashlightOn && currentBatteryLife > 0)
         {
             currentBatteryLife -= drainRate * Time.deltaTime;
-
-            // Turn off flashlight if battery is depleted
+          
+            
             if (currentBatteryLife <= 0)
             {
                 currentBatteryLife = 0;

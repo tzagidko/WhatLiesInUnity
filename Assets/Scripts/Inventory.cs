@@ -4,15 +4,15 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [Header("Inventory Settings")]
-    public int maxSlots = 3;               // Maximum number of slots in the inventory
-    private List<string> items;             // List to store item names (like "Key")
+    public int maxSlots = 3;               
+    private List<string> items;             
 
     void Start()
     {
         items = new List<string>();
     }
 
-    // Adds an item to the inventory if there's room
+  
     public bool AddItem(string itemName)
     {
         if (items.Count < maxSlots)
@@ -28,13 +28,13 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    // Checks if an item exists in the inventory
+    
     public bool HasItem(string itemName)
     {
         return items.Contains(itemName);
     }
 
-    // Removes an item from the inventory
+    
     public void RemoveItem(string itemName)
     {
         if (items.Contains(itemName))
@@ -48,7 +48,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    // Debug function to print inventory contents
+    
     public void PrintInventory()
     {
         Debug.Log("Inventory contains: " + string.Join(", ", items));

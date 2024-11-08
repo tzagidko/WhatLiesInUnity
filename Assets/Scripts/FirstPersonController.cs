@@ -23,19 +23,19 @@ public class FirstPersonController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
 
-        // Lock cursor to the center of the screen and hide it
+       
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
     {
-        // Handle mouse look
+        
         MouseLook();
 
-        // Handle movement
+        
         Move();
 
-        // Apply gravity and jump logic
+        
         ApplyGravity();
     }
 
@@ -64,7 +64,7 @@ public class FirstPersonController : MonoBehaviour
     {
         if (controller.isGrounded && velocity.y < 0)
         {
-            velocity.y = -2f; // A small negative value to keep the player grounded
+            velocity.y = -2f; 
         }
 
         if (Input.GetButtonDown("Jump") && controller.isGrounded)
